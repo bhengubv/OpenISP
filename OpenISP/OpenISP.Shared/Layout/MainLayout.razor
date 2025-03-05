@@ -1,23 +1,133 @@
-﻿@inherits LayoutComponentBase
+﻿@using Microsoft.JSInterop
+@inherits LayoutComponentBase
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+@inject NavigationManager NavManager
+@inject IJSRuntime JSRuntime
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
 
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
+<header class="header">
+    <section class="flex">
+        <div id="menu-btn" class="fas fa-bars-staggered" @onclick="ManageBurgerMenuToggleNavBar"></div>
+        <a href="/" class="logo"><img src="_content/com.bhengubv.thejobcenter.Shared/images/app/TJCNB100x75.jpg" alt="image" />&nbsp;</a>
+
+        <nav class="navbar">
+            <a href="/">home</a>
+            @* <a href="/jobs">jobs</a> *@
+            <a href="/hotspot/find">find hotspot</a>
+            <a href="/login">account</a>
+            <a href="/contact">contact</a>
+            <a href="/about">about us</a>
+        </nav>
+        @* <p>Click count: @clickCount</p> *@
+        <a href="/gatewayhome" class="btn" style="margin-top: 0;">Gate Way</a>
+
+    </section>
+</header>
+
+<div class="content">
+    @* <FluentStack Orientation="@Orientation.Vertical" VerticalGap="8">
+        <FluentMessageBar Title="Status" Visible="@AppLoadingStateStatic.StatusMessageIsActive" Intent="@MessageIntent.Custom"
+        Icon="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.InfoShield())" onclick="ClearPageMessageTexts('Status')"
+        IconColor="Color.Accent" AllowDismiss="true">
+            @AppLoadingStateStatic.StatusMessage
+        </FluentMessageBar>
+        <FluentMessageBar Title="Info" Visible="@AppLoadingStateStatic.MessageIsActive" onclick="ClearPageMessageTexts('Info')"
+        Intent="@MessageIntent.Custom" Icon="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.LeafTwo())" IconColor="Color.Neutral" AllowDismiss="true">
+            @AppLoadingStateStatic.Message
+        </FluentMessageBar>
+
+        <FluentMessageBar Title="Success" Visible="@AppLoadingStateStatic.SuccessMessageIsActive" Intent="@MessageIntent.Success"
+        Icon="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.Check())" onclick="ClearPageMessageTexts('Success')"
+        IconColor="Color.Success" AllowDismiss="true">
+            @AppLoadingStateStatic.SuccessMessage
+        </FluentMessageBar>
+
+        <FluentMessageBar Title="Warning" Visible="@AppLoadingStateStatic.WarningMessageIsActive" Intent="@MessageIntent.Warning"
+        Icon="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.Warning())" onclick="ClearPageMessageTexts('Warning')"
+        IconColor="Color.Warning" AllowDismiss="true">
+            @AppLoadingStateStatic.WarningMessage
+        </FluentMessageBar>
+
+        <FluentMessageBar Title="Error" Visible="@AppLoadingStateStatic.ErrorMessageIsActive" Intent="@MessageIntent.Error"
+        Icon="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.ErrorCircle())" onclick="ClearPageMessageTexts('Error')" 
+        IconColor="Color.Error" AllowDismiss="true">
+            @AppLoadingStateStatic.ErrorMessage
+        </FluentMessageBar>
+
+        <FluentMessageBar Title="Attention" Visible="@AppLoadingStateStatic.CustomMessageIsActive" Intent="@MessageIntent.Custom"
+        Icon="@(new Microsoft.FluentUI.AspNetCore.Components.Icons.Filled.Size20.LeafTwo())" onclick="ClearPageMessageTexts('Custom')"
+        IconColor="Color.Neutral" AllowDismiss="true">
+            @AppLoadingStateStatic.CustomMessage
+        </FluentMessageBar>
+    </FluentStack> *@
+    @Body
 </div>
 
-<div id="blazor-error-ui" data-nosnippet>
-    An unhandled error has occurred.
-    <a href="." class="reload">Reload</a>
-    <span class="dismiss">🗙</span>
-</div>
+@code {
+
+    // private string MessageBarBodyMessage { get; set; } = AppLoadingStateStatic.Message;
+    // private string MessageBarBodyCustomMessage { get; set; } = AppLoadingStateStatic.CustomMessage;
+    // private string MessageBarBodyStatusMessage { get; set; } = AppLoadingStateStatic.StatusMessage;
+    // private string MessageBarBodyErrorMessage { get; set; } = AppLoadingStateStatic.ErrorMessage;
+    // private string MessageBarBodySuccessMessage { get; set; } = AppLoadingStateStatic.SuccessMessage;
+    // private string MessageBarBodyWarningMessage { get; set; } = AppLoadingStateStatic.WarningMessage;
+
+    private bool pageDataLoaded = false;
+    private double geoLat, geoLong;
+    private string geoLocation;
+    private string gps;
+
+    private string? searchCountryText { get; set; }
+    private string? selectedCountryFlag { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        try
+        {
+
+            if (!pageDataLoaded)
+                await LoadPageData();
+        }
+        catch (Exception ex)
+        {
+            string errorMessage = $"Source - MainLayout - OnInitializedAsync(): {ex.Message}";
+            Console.WriteLine(errorMessage);
+        }
+        finally
+        {
+            pageDataLoaded = true;
+        }
+    }
+
+    private async Task LoadPageData()
+    {
+        pageDataLoaded = false;
+
+#if ANDROID
+        await baseService.GetLocationPermission();
+
+        if (AppLoadingStateStatic.LocationData!= null)
+        {
+            //Using GPS location
+            if (string.IsNullOrEmpty(AppLoadingStateStatic.CountryName) )
+            {
+            //Get country
+            await baseService.GetGeocodeReverseData(AppLoadingStateStatic.LocationData.Latitude, AppLoadingStateStatic.LocationData.Longitude);
+            }
+            else
+            {
+            AppLoadingStateStatic.CountryName = string.Empty;
+            }
+        }
+#endif
+    }
+
+    public async Task ManageBurgerMenuToggleNavBar()
+    {
+        //clickCount++;
+        Console.WriteLine("ManageBurgerMenuToggleNavBar C# method called");
+        await JSRuntime.InvokeVoidAsync("manageBurgerMenuToggleToo");
+    }
+
+    }

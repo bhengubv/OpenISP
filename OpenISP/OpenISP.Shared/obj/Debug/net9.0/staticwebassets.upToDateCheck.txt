@@ -1,0 +1,7 @@
+C:\Dev\Solutions\OpenSourceBhengu\OpenISP\OpenISP\OpenISP.Shared\wwwroot\bootstrap\bootstrap.min.css.map
+C:\Dev\Solutions\OpenSourceBhengu\OpenISP\OpenISP\OpenISP.Shared\wwwroot\app.css
+C:\Dev\Solutions\OpenSourceBhengu\OpenISP\OpenISP\OpenISP.Shared\wwwroot\bootstrap\bootstrap.min.css
+wwwroot\app.css
+wwwroot\bootstrap\bootstrap.min.css
+wwwroot\bootstrap\bootstrap.min.css.map
+wwwroot\favicon.png

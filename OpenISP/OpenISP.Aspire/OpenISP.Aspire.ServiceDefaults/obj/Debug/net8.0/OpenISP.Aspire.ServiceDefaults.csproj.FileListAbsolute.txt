@@ -1,0 +1,13 @@
+C:\Dev\Solutions\OpenSourceBhengu\OpenISP\OpenISP\OpenISP.Aspire\OpenISP.Aspire.ServiceDefaults\bin\Debug\net8.0\OpenISP.Aspire.ServiceDefaults.deps.json
+C:\Dev\Solutions\OpenSourceBhengu\OpenISP\OpenISP\OpenISP.Aspire\OpenISP.Aspire.ServiceDefaults\bin\Debug\net8.0\OpenISP.Aspire.ServiceDefaults.dll
+C:\Dev\Solutions\OpenSourceBhengu\OpenISP\OpenISP\OpenISP.Aspire\OpenISP.Aspire.ServiceDefaults\bin\Debug\net8.0\OpenISP.Aspire.ServiceDefaults.pdb
+C:\Dev\Solutions\OpenSourceBhengu\OpenISP\OpenISP\OpenISP.Aspire\OpenISP.Aspire.ServiceDefaults\obj\Debug\net8.0\OpenISP.Aspire.ServiceDefaults.csproj.AssemblyReference.cache
+C:\Dev\Solutions\OpenSourceBhengu\OpenISP\OpenISP\OpenISP.Aspire\OpenISP.Aspire.ServiceDefaults\obj\Debug\net8.0\OpenISP.Aspire.ServiceDefaults.GeneratedMSBuildEditorConfig.editorconfig
+C:\Dev\Solutions\OpenSourceBhengu\OpenISP\OpenISP\OpenISP.Aspire\OpenISP.Aspire.ServiceDefaults\obj\Debug\net8.0\OpenISP.Aspire.ServiceDefaults.AssemblyInfoInputs.cache
+C:\Dev\Solutions\OpenSourceBhengu\OpenISP\OpenISP\OpenISP.Aspire\OpenISP.Aspire.ServiceDefaults\obj\Debug\net8.0\OpenISP.Aspire.ServiceDefaults.AssemblyInfo.cs
+C:\Dev\Solutions\OpenSourceBhengu\OpenISP\OpenISP\OpenISP.Aspire\OpenISP.Aspire.ServiceDefaults\obj\Debug\net8.0\OpenISP.Aspire.ServiceDefaults.csproj.CoreCompileInputs.cache
+C:\Dev\Solutions\OpenSourceBhengu\OpenISP\OpenISP\OpenISP.Aspire\OpenISP.Aspire.ServiceDefaults\obj\Debug\net8.0\OpenISP.Aspire.ServiceDefaults.sourcelink.json
+C:\Dev\Solutions\OpenSourceBhengu\OpenISP\OpenISP\OpenISP.Aspire\OpenISP.Aspire.ServiceDefaults\obj\Debug\net8.0\OpenISP.Aspire.ServiceDefaults.dll
+C:\Dev\Solutions\OpenSourceBhengu\OpenISP\OpenISP\OpenISP.Aspire\OpenISP.Aspire.ServiceDefaults\obj\Debug\net8.0\refint\OpenISP.Aspire.ServiceDefaults.dll
+C:\Dev\Solutions\OpenSourceBhengu\OpenISP\OpenISP\OpenISP.Aspire\OpenISP.Aspire.ServiceDefaults\obj\Debug\net8.0\OpenISP.Aspire.ServiceDefaults.pdb
+C:\Dev\Solutions\OpenSourceBhengu\OpenISP\OpenISP\OpenISP.Aspire\OpenISP.Aspire.ServiceDefaults\obj\Debug\net8.0\ref\OpenISP.Aspire.ServiceDefaults.dll

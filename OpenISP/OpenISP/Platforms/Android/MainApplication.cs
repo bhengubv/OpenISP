@@ -1,15 +1,18 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace OpenISP;
+using OpenISP; // Add this to reference MauiProgram
 
-[Application]
-public class MainApplication : MauiApplication
+namespace OpenISP
 {
-    public MainApplication(IntPtr handle, JniHandleOwnership ownership)
-        : base(handle, ownership)
+    [Application]
+    public class MainApplication : MauiApplication
     {
-    }
+        public MainApplication(IntPtr handle, JniHandleOwnership ownership)
+            : base(handle, ownership)
+        {
+        }
 
-    protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
+        protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
+    }
 }

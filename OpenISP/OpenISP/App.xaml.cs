@@ -1,14 +1,14 @@
-﻿namespace OpenISP;
+﻿using Microsoft.Maui.Controls;
 
-public partial class App : Application
+namespace OpenISP
 {
-    public App()
+    public partial class App : Application
     {
-        InitializeComponent();
-    }
+        public App()
+        {
+            InitializeComponent();
 
-    protected override Window CreateWindow(IActivationState? activationState)
-    {
-        return new Window(new MainPage()) { Title = "OpenISP" };
+            MainPage = new MainPage(); // Assuming MainPage hosts the BlazorWebView
+        }
     }
 }

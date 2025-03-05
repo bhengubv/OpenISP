@@ -1,3 +1,3 @@
 var builder = DistributedApplication.CreateBuilder(args);
-builder.AddProject<Projects.OpenISP>("openisp");
+builder.AddProject<Projects.OpenISP_Web>("openisp-web");
 builder.Build().Run();

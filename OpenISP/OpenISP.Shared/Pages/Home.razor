@@ -1,27 +1,64 @@
 @page "/"
-@inject WiFiDirectService WiFiService
+@using OpenISP.Shared.Services
+@inject IWiFiDirectService WiFiService
 @inject CreditService Credits
+@inject CustomAuthService AuthService
 
-<AuthorizeView>
-    <Authorized>
-        <h1>OpenISP v0.0.1</h1>
-        <p>Welcome, @context.User.Identity.Name!</p>
-        <p>Status: @status</p>
-        <p>Credits: @Credits.Credits</p>
-        <button @onclick="Connect">Connect</button>
-        <button @onclick="() => Credits.AddCredits(1)">Add Credit</button>
-    </Authorized>
-    <NotAuthorized>
-        <p>Please log in</p>
-    </NotAuthorized>
-</AuthorizeView>
+@if (IsAuthenticated)
+{
+    <h1>OpenISP v0.0.1</h1>
+    <p>Welcome, @AuthService.GetCurrentUser().Identity!.Name!</p>
+    <p>Status: @status</p>
+    <p>Credits: @Credits.Credits</p>
+    <button @onclick="Connect">Connect</button>
+    <button @onclick="AddCredit">Add Credit</button>
+    <button @onclick="Logout">Logout</button>
+}
+else
+{
+    <p>Please log in</p>
+    <button @onclick="Login">Login</button>
+}
 
 @code {
-    string status = "Disconnected";
+    private string status = "Disconnected";
+    private bool IsAuthenticated => AuthService.GetCurrentUser().Identity?.IsAuthenticated ?? false;
 
-    async Task Connect()
+    protected override void OnInitialized()
     {
-        await WiFiService.DiscoverPeers();
-        status = "Discovering...";
+        AuthService.OnAuthStateChanged += StateHasChanged;
+    }
+
+    private async Task Connect()
+    {
+        try
+        {
+            bool success = await WiFiService.DiscoverPeersAsync();
+            status = success ? "Connected" : "Discovery Failed";
+        }
+        catch (Exception ex)
+        {
+            status = $"Error: {ex.Message}";
+        }
+    }
+
+    private void AddCredit()
+    {
+        Credits.AddCredits(1);
+    }
+
+    private async Task Login()
+    {
+        await AuthService.LoginAsync("TestUser"); // Replace with real login logic
+    }
+
+    private async Task Logout()
+    {
+        await AuthService.LogoutAsync();
+    }
+
+    public void Dispose()
+    {
+        AuthService.OnAuthStateChanged -= StateHasChanged;
     }
 }

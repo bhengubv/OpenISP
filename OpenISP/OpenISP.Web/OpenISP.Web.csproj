@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\OpenISP.Aspire\OpenISP.Aspire.ServiceDefaults\OpenISP.Aspire.ServiceDefaults.csproj" />
     <ProjectReference Include="..\OpenISP.Shared\OpenISP.Shared.csproj" />
   </ItemGroup>
 

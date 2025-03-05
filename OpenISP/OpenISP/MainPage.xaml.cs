@@ -1,9 +1,10 @@
-﻿namespace OpenISP;
-
-public partial class MainPage : ContentPage
+﻿namespace OpenISP
 {
-    public MainPage()
+    public partial class MainPage : ContentPage
     {
-        InitializeComponent();
+        public MainPage()
+        {
+            InitializeComponent();
+        }
     }
 }
