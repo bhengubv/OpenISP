@@ -1,0 +1,27 @@
+@page "/"
+@inject WiFiDirectService WiFiService
+@inject CreditService Credits
+
+<AuthorizeView>
+    <Authorized>
+        <h1>OpenISP v0.0.1</h1>
+        <p>Welcome, @context.User.Identity.Name!</p>
+        <p>Status: @status</p>
+        <p>Credits: @Credits.Credits</p>
+        <button @onclick="Connect">Connect</button>
+        <button @onclick="() => Credits.AddCredits(1)">Add Credit</button>
+    </Authorized>
+    <NotAuthorized>
+        <p>Please log in</p>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+    string status = "Disconnected";
+
+    async Task Connect()
+    {
+        await WiFiService.DiscoverPeers();
+        status = "Discovering...";
+    }
+}
