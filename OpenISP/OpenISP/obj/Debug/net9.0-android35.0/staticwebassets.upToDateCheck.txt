@@ -1,4 +1,0 @@
-C:\Dev\Solutions\OpenSourceBhengu\OpenISP\OpenISP\OpenISP\wwwroot\app.css
-C:\Dev\Solutions\OpenSourceBhengu\OpenISP\OpenISP\OpenISP\wwwroot\index.html
-wwwroot\app.css
-wwwroot\index.html
